@@ -2,7 +2,7 @@
 
 import { useSearchParams, useRouter } from 'next/navigation'
 import { useState, useMemo, useCallback, useRef, useTransition, useEffect } from 'react'
-import type { MotionWithVotes, Candidate } from '@/lib/supabase'
+import type { MotionWithVotes, Candidate } from '@/lib/localData'
 import { MotionFilters } from './MotionFilters'
 import { MotionFeed } from './MotionFeed'
 import { parseArray, stringifyArray } from '@/lib/utils'

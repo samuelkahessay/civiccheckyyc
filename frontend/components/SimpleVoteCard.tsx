@@ -1,6 +1,6 @@
 'use client'
 
-import type { Vote } from "@/lib/supabase"
+import type { Vote } from "@/lib/localData"
 import { formatTopicName, cn } from "@/lib/utils"
 import { format } from "date-fns"
 import { Calendar, Info, CheckCircle, XCircle, MinusCircle } from "lucide-react"

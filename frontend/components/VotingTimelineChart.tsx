@@ -1,6 +1,6 @@
 'use client'
 
-import type { Vote } from '@/lib/supabase'
+import type { Vote } from '@/lib/localData'
 import { Card, AreaChart } from '@tremor/react'
 import { format, parseISO } from 'date-fns'
 

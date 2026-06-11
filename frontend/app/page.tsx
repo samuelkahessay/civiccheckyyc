@@ -1,9 +1,10 @@
-import { getCandidates, getAggregateStats, getAllCandidateStats, getFilteredMotions, getMotionTopicStats } from '@/lib/supabase'
+import { getCandidates, getAggregateStats, getAllCandidateStats, getFilteredMotions, getMotionTopicStats } from '@/lib/localData'
 import { HomeContent } from '@/components/HomeContent'
 import { AlertTriangle } from 'lucide-react'
 import { Metadata } from 'next'
 import { cn } from '@/lib/utils'
 import { getTypographyClasses } from '@/lib/design-tokens'
+import { absoluteUrl } from '@/lib/site'
 
 export const revalidate = 900 // ISR: Revalidate every 15 minutes
 
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'CivicCheckYYC - Calgary Mayoral Voting Records',
     description: 'Track and compare Calgary mayoral candidates based on their actual council voting records. Beyond promises. Real votes.',
-    url: 'https://civiccheckyyc.vercel.app',
+    url: absoluteUrl(),
     siteName: 'CivicCheckYYC',
     locale: 'en_CA',
     type: 'website',
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     images: ['/og-image.png'],
   },
   alternates: {
-    canonical: 'https://civiccheckyyc.vercel.app',
+    canonical: absoluteUrl(),
   },
 }
 

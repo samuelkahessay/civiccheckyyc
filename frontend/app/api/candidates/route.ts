@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { getFilteredCandidates, getFilteredCandidatesCount } from '@/lib/supabase'
+import { getFilteredCandidates, getFilteredCandidatesCount } from '@/lib/localData'
 import { parseArray } from '@/lib/utils'
 
 export const dynamic = 'force-dynamic'

@@ -3,7 +3,7 @@
 import { Card, Divider } from '@tremor/react'
 import { ExternalLink, Quote, Tag } from 'lucide-react'
 import Link from 'next/link'
-import type { PlatformStance } from '@/lib/supabase'
+import type { PlatformStance } from '@/lib/localData'
 import { UnifiedBadge } from './UnifiedBadge'
 
 interface PlatformStancesSectionProps {

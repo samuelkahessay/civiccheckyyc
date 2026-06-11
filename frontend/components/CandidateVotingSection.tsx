@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import type { Vote } from '@/lib/supabase'
+import type { Vote } from '@/lib/localData'
 import { VotingStatsGrid } from './VotingStatsGrid'
 import { VotingTimelineChart } from './VotingTimelineChart'
 import { VotesByTopicChart } from './VotesByTopicChart'

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { getFilteredMotions, getFilteredMotionsCount } from '@/lib/supabase'
+import { getFilteredMotions, getFilteredMotionsCount } from '@/lib/localData'
 import { parseArray } from '@/lib/utils'
 
 export const dynamic = 'force-dynamic'

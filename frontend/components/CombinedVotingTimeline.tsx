@@ -1,6 +1,6 @@
 'use client'
 
-import type { VoteWithCandidate } from '@/lib/supabase'
+import type { VoteWithCandidate } from '@/lib/localData'
 import { Card, BarChart } from '@tremor/react'
 import { format, parseISO, startOfMonth, addMonths, isAfter } from 'date-fns'
 

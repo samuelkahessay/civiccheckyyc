@@ -1,4 +1,4 @@
-import type { MotionWithVotes, CandidateWithStats } from '@/lib/supabase'
+import type { MotionWithVotes, CandidateWithStats } from '@/lib/localData'
 import { OverviewStats } from './OverviewStats'
 import { MotionCard } from './MotionCard'
 import { CandidateCard } from './CandidateCard'

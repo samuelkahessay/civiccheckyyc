@@ -6,17 +6,16 @@
 
 # Data
 /data
-backend/data/
 *.json
 !package.json
+!package-lock.json
+!frontend/package-lock.json
 !tsconfig.json
-!vercel.json
 !.vscode/*.json
 
 # Logs
 *.log
 data/*.log
-backend/*.log
 
 # Checkpoints
 checkpoint_*.json

@@ -1,6 +1,6 @@
 'use client'
 
-import type { Vote } from '@/lib/supabase'
+import type { Vote } from '@/lib/localData'
 import { formatTopicName } from '@/lib/utils'
 import { Card, BarChart, DonutChart } from '@tremor/react'
 import { getTopicColor } from '@/lib/topicColors'

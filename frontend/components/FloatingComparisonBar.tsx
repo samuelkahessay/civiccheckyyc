@@ -1,6 +1,6 @@
 'use client'
 
-import type { Candidate } from '@/lib/supabase'
+import type { Candidate } from '@/lib/localData'
 import DSButton from './DSButton'
 import { GitCompare, X } from 'lucide-react'
 import Link from 'next/link'

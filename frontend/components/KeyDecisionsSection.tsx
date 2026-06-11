@@ -1,6 +1,6 @@
 'use client'
 
-import type { Vote } from '@/lib/supabase'
+import type { Vote } from '@/lib/localData'
 import { SimpleVoteCard } from './SimpleVoteCard'
 import { formatTopicName } from '@/lib/utils'
 import { Flame, X } from 'lucide-react'

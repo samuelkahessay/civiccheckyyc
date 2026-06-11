@@ -1,4 +1,4 @@
-import { getMotionsByTopic, getCandidates, getAllVotesWithCandidates } from '@/lib/supabase'
+import { getMotionsByTopic, getCandidates, getAllVotesWithCandidates } from '@/lib/localData'
 import { Card } from '@tremor/react'
 import { Tag, ArrowLeft } from 'lucide-react'
 import { formatTopicName } from '@/lib/utils'

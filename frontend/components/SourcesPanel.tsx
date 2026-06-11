@@ -1,4 +1,4 @@
-import type { Vote } from "@/lib/supabase"
+import type { Vote } from "@/lib/localData"
 
 interface SourcesPanelProps {
   vote: Vote

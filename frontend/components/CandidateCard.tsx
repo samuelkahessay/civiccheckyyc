@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import type { Candidate } from '@/lib/supabase'
+import type { Candidate } from '@/lib/localData'
 import { ArrowRight, Check, Globe } from 'lucide-react'
 import { TopicBadges } from './TopicBadges'
 import { getCardClasses } from '@/lib/component-variants'

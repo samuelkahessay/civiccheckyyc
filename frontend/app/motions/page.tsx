@@ -1,4 +1,4 @@
-import { getAllMotionsWithVotes, getCandidates, getMotionTopicStats, getMotionCount, getFilteredMotions, getFilteredMotionsCount } from '@/lib/supabase'
+import { getAllMotionsWithVotes, getCandidates, getMotionTopicStats, getMotionCount, getFilteredMotions, getFilteredMotionsCount } from '@/lib/localData'
 import { MotionsPageClient } from '@/components/MotionsPageClient'
 import { FileText } from 'lucide-react'
 import { getTypographyClasses } from '@/lib/design-tokens'

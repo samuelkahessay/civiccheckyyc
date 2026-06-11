@@ -1,5 +1,5 @@
-import { getCandidatesByIds, getVotesByCandidate, getOverlappingVotes, getPairwiseBrief } from '@/lib/supabase'
-import type { CandidateComparisonData, OverlappingVote } from '@/lib/supabase'
+import { getCandidatesByIds, getVotesByCandidate, getOverlappingVotes, getPairwiseBrief } from '@/lib/localData'
+import type { CandidateComparisonData, OverlappingVote } from '@/lib/localData'
 import { Card, BarChart, DonutChart, Divider } from '@tremor/react'
 import { ArrowLeft, GitCompare, CheckCircle, XCircle, MinusCircle } from 'lucide-react'
 import Link from 'next/link'
@@ -9,6 +9,7 @@ import { format } from 'date-fns'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { ImpactBadge, TopicBadge, UnifiedBadge } from '@/components/UnifiedBadge'
 import { getTypographyClasses } from '@/lib/design-tokens'
+import { absoluteUrl } from '@/lib/site'
 
 export const revalidate = 3600
 
@@ -40,7 +41,7 @@ export async function generateMetadata({ searchParams }: PageProps) {
       openGraph: {
         title: `Compare Calgary Candidates: ${names}`,
         description,
-        url: `https://civiccheckyyc.vercel.app/compare?candidates=${candidateIds.join(',')}`,
+        url: absoluteUrl(`/compare?candidates=${candidateIds.join(',')}`),
         siteName: 'CivicCheckYYC',
         locale: 'en_CA',
         type: 'website',
@@ -51,7 +52,7 @@ export async function generateMetadata({ searchParams }: PageProps) {
         description,
       },
       alternates: {
-        canonical: `https://civiccheckyyc.vercel.app/compare`,
+        canonical: absoluteUrl('/compare'),
       },
     }
   } catch {

@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
-import type { Candidate, VoteWithCandidate, MotionWithVotes } from '@/lib/supabase'
+import type { Candidate, VoteWithCandidate, MotionWithVotes } from '@/lib/localData'
 import { OverviewStats } from './OverviewStats'
 import { InteractiveDashboard } from './InteractiveDashboard'
 

@@ -243,7 +243,7 @@ const generateHTML = () => {
             </div>
           </div>
 
-          <div class="url">civiccheckyyc.vercel.app</div>
+          <div class="url">local archive</div>
         </div>
       </div>
     </div>

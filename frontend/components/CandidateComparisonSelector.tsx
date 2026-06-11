@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Card } from '@tremor/react'
-import type { Candidate } from '@/lib/supabase'
+import type { Candidate } from '@/lib/localData'
 import { GitCompare, X } from 'lucide-react'
 import Link from 'next/link'
 

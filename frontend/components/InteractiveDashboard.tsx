@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useMemo, forwardRef, useImperativeHandle } from 'react'
-import type { Candidate, VoteWithCandidate, MotionWithVotes } from '@/lib/supabase'
+import type { Candidate, VoteWithCandidate, MotionWithVotes } from '@/lib/localData'
 import { DashboardFilters } from './DashboardFilters'
 import { TopicFilterChips } from './TopicFilterChips'
 import { VotingActivityFeed } from './VotingActivityFeed'

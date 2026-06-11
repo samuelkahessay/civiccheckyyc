@@ -1,4 +1,4 @@
-import { getMotionById, getMotionExplainerByMotionId } from '@/lib/supabase'
+import { getMotionById, getMotionExplainerByMotionId } from '@/lib/localData'
 import { Card, DonutChart } from '@tremor/react'
 import { ArrowLeft, Calendar, FileText, CheckCircle, XCircle, MinusCircle, Flame, ExternalLink } from 'lucide-react'
 import { format } from 'date-fns'
@@ -226,7 +226,6 @@ export default async function MotionDetailPage({ params }: PageProps) {
               {/** lazy import to avoid server warnings */}
               {require('@/components/CitationsToggle').default && (
                 // dynamic require to avoid top-level use client constraints here
-                // eslint-disable-next-line @typescript-eslint/no-var-requires
                 (() => {
                   const CitationsToggle = require('@/components/CitationsToggle').default
                   return <CitationsToggle citations={explainer.citations as any[]} className="mt-3" />

@@ -1,6 +1,6 @@
 'use client'
 
-import type { VoteWithCandidate } from '@/lib/supabase'
+import type { VoteWithCandidate } from '@/lib/localData'
 import { Card } from '@tremor/react'
 import { Calendar, User } from 'lucide-react'
 import { format } from 'date-fns'

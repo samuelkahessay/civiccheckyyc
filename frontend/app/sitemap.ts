@@ -1,31 +1,29 @@
 import { MetadataRoute } from 'next'
-import { getCandidates, getMotions, getMotionTopicStats } from '@/lib/supabase'
+import { getCandidates, getMotions, getMotionTopicStats } from '@/lib/localData'
+import { absoluteUrl } from '@/lib/site'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://civiccheckyyc.vercel.app'
-
-  // Static routes
   const staticRoutes: MetadataRoute.Sitemap = [
     {
-      url: baseUrl,
+      url: absoluteUrl(),
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/candidates`,
+      url: absoluteUrl('/candidates'),
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/motions`,
+      url: absoluteUrl('/motions'),
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/compare`,
+      url: absoluteUrl('/compare'),
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.7,
@@ -41,21 +39,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ])
 
     const candidateRoutes: MetadataRoute.Sitemap = candidates.map((candidate) => ({
-      url: `${baseUrl}/candidates/${candidate.slug}`,
+      url: absoluteUrl(`/candidates/${candidate.slug}`),
       lastModified: new Date(candidate.updated_at),
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     }))
 
     const motionRoutes: MetadataRoute.Sitemap = motions.map((motion) => ({
-      url: `${baseUrl}/motions/${motion.id}`,
+      url: absoluteUrl(`/motions/${motion.id}`),
       lastModified: new Date(motion.updated_at),
       changeFrequency: 'monthly' as const,
       priority: 0.6,
     }))
 
     const topicRoutes: MetadataRoute.Sitemap = topicStats.map((stat) => ({
-      url: `${baseUrl}/topics/${encodeURIComponent(stat.topic)}`,
+      url: absoluteUrl(`/topics/${encodeURIComponent(stat.topic)}`),
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.7,
@@ -63,7 +61,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     return [...staticRoutes, ...candidateRoutes, ...motionRoutes, ...topicRoutes]
   } catch (err) {
-    // Fallback to static routes only if data fetch fails (e.g., no network at build time)
+    // Keep the local archive buildable even if the seed database cannot be opened.
     return staticRoutes
   }
 }

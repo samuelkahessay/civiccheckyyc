@@ -1,6 +1,6 @@
 'use client'
 
-import type { MotionWithVotes } from '@/lib/supabase'
+import type { MotionWithVotes } from '@/lib/localData'
  
 import { Calendar, Users, CheckCircle, XCircle, MinusCircle } from 'lucide-react'
 import { format } from 'date-fns'

@@ -89,7 +89,7 @@ export function PipelineExplanationModal() {
                       Motion titles and summaries are AI-generated for readability. The original resolution text is always available.
                     </p>
                     <ul className="text-sm text-gray-700 space-y-1 ml-4 list-disc">
-                      <li>We use OpenAI's GPT-5-mini model with versioned prompts</li>
+                      <li>The archived summaries were produced with versioned prompts</li>
                       <li>All processing is logged: timestamps, model version, prompt version, token usage</li>
                       <li>The AI summarizes complex legal language into plain English</li>
                       <li>Votes marked "AI Generated" have not been human-verified</li>

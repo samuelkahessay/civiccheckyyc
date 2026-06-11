@@ -2,7 +2,7 @@
 
 import { useSearchParams, useRouter } from 'next/navigation'
 import { useState, useMemo, useCallback, useRef, useTransition, useEffect } from 'react'
-import type { CandidateWithStats } from '@/lib/supabase'
+import type { CandidateWithStats } from '@/lib/localData'
 import { CandidateFilters } from './CandidateFilters'
 import { CandidateFeed } from './CandidateFeed'
 import { parseArray, stringifyArray } from '@/lib/utils'

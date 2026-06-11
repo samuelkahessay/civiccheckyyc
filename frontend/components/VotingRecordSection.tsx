@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import type { Vote } from '@/lib/supabase'
+import type { Vote } from '@/lib/localData'
 import { VoteCard } from './VoteCard'
 import { formatTopicName, getUniqueTopics } from '@/lib/utils'
 import { Card } from '@tremor/react'

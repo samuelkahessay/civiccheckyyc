@@ -3,7 +3,7 @@
 import { Card, MultiSelect, MultiSelectItem } from '@tremor/react'
 import { Search, X, Flame, ChevronDown, ChevronUp } from 'lucide-react'
 import { TopicFilterChips } from './TopicFilterChips'
-import type { Candidate } from '@/lib/supabase'
+import type { Candidate } from '@/lib/localData'
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
 import { getTypographyClasses } from '@/lib/design-tokens'

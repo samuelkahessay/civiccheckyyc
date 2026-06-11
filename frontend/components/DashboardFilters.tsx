@@ -3,7 +3,7 @@
 import { Card, TabGroup, TabList, Tab, MultiSelect, MultiSelectItem, Select, SelectItem } from '@tremor/react'
 import { Search, X, LayoutGrid, List, Flame, FileText } from 'lucide-react'
 import { getTypographyClasses } from '@/lib/design-tokens'
-import type { Candidate } from '@/lib/supabase'
+import type { Candidate } from '@/lib/localData'
 import DSTextInput from './DSTextInput'
 import DSButton from './DSButton'
 

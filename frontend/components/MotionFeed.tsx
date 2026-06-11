@@ -1,6 +1,6 @@
 'use client'
 
-import type { MotionWithVotes } from '@/lib/supabase'
+import type { MotionWithVotes } from '@/lib/localData'
 import { Card } from '@tremor/react'
 import { MotionCard } from './MotionCard'
 

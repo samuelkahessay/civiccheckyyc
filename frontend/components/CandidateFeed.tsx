@@ -1,6 +1,6 @@
 'use client'
 
-import type { CandidateWithStats } from '@/lib/supabase'
+import type { CandidateWithStats } from '@/lib/localData'
 import { Card } from '@tremor/react'
 import { CandidateCard } from './CandidateCard'
 import { Info } from 'lucide-react'

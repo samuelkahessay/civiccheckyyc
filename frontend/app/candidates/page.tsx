@@ -1,4 +1,4 @@
-import { getFilteredCandidates, getFilteredCandidatesCount, getCandidateCount, getTopicStats } from '@/lib/supabase'
+import { getFilteredCandidates, getFilteredCandidatesCount, getCandidateCount, getTopicStats } from '@/lib/localData'
 import { CandidatesPageClient } from '@/components/CandidatesPageClient'
 import { Users } from 'lucide-react'
 import { parseArray, formatTopicName } from '@/lib/utils'

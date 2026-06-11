@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next";
 import { TremorColorSafelist } from "@/components/TremorColorSafelist";
 import { Navigation } from "@/components/Navigation";
+import { absoluteUrl, getSiteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://civiccheckyyc.vercel.app'),
+  metadataBase: new URL(getSiteUrl()),
   title: {
     default: "CivicCheckYYC - Calgary Election 2025",
     template: "%s | CivicCheckYYC"
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_CA',
-    url: 'https://civiccheckyyc.vercel.app',
+    url: absoluteUrl(),
     siteName: 'CivicCheckYYC',
     title: 'CivicCheckYYC - Calgary Election 2025',
     description: 'Track voting records of Calgary mayoral candidates. Beyond promises. Real votes.',
@@ -79,7 +79,6 @@ export default function RootLayout({
         <TremorColorSafelist />
         <Navigation />
         <main id="main-content">{children}</main>
-        <Analytics />
       </body>
     </html>
   );

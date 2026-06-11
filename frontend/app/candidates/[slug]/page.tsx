@@ -1,4 +1,4 @@
-import { getCandidateBySlug, getVotesByCandidate, getPlatformStancesByCandidate } from '@/lib/supabase'
+import { getCandidateBySlug, getVotesByCandidate, getPlatformStancesByCandidate } from '@/lib/localData'
 import { CandidateVotingSection } from '@/components/CandidateVotingSection'
 import { PlatformStancesSection } from '@/components/PlatformStancesSection'
 import { notFound } from 'next/navigation'
@@ -8,6 +8,7 @@ import CitationsToggle from '@/components/CitationsToggle'
 import { ArrowLeft, ExternalLink, Globe, Info } from 'lucide-react'
 import DSButton from '@/components/DSButton'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
+import { absoluteUrl } from '@/lib/site'
 
 export const revalidate = 3600
 
@@ -34,7 +35,7 @@ export async function generateMetadata({ params }: PageProps) {
       openGraph: {
         title: `${candidate.name} - Calgary Council Voting Record`,
         description,
-        url: `https://civiccheckyyc.vercel.app/candidates/${candidate.slug}`,
+        url: absoluteUrl(`/candidates/${candidate.slug}`),
         siteName: 'CivicCheckYYC',
         locale: 'en_CA',
         type: 'profile',
@@ -45,7 +46,7 @@ export async function generateMetadata({ params }: PageProps) {
         description,
       },
       alternates: {
-        canonical: `https://civiccheckyyc.vercel.app/candidates/${candidate.slug}`,
+        canonical: absoluteUrl(`/candidates/${candidate.slug}`),
       },
     }
   } catch {

@@ -1,6 +1,6 @@
 'use client'
 
-import type { Vote } from '@/lib/supabase'
+import type { Vote } from '@/lib/localData'
 import { Card, Metric, Text, Flex } from '@tremor/react'
 
 interface VotingStatsGridProps {
