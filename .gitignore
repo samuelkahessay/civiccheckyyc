@@ -1,0 +1,31 @@
+# API Keys
+.env
+
+# macOS
+.DS_Store
+
+# Data
+/data
+backend/data/
+*.json
+!package.json
+!tsconfig.json
+!vercel.json
+!.vscode/*.json
+
+# Logs
+*.log
+data/*.log
+backend/*.log
+
+# Checkpoints
+checkpoint_*.json
+data/checkpoint_*.json
+
+# Python
+*.pyc
+__pycache__/
+venv/
+frontend/node_modules/
+frontend/.next/
+.vercel
