@@ -1,5 +1,6 @@
 import { format } from 'date-fns'
 import Link from 'next/link'
+import { parseMeetingDate } from '@/lib/utils'
 
 interface OverviewStatsProps {
   totalVotes: number
@@ -21,7 +22,7 @@ export function OverviewStats({
 }: OverviewStatsProps) {
   const dateLabel =
     dateRange.earliest && dateRange.latest
-      ? `${format(new Date(dateRange.earliest), 'MMM yyyy')} – ${format(new Date(dateRange.latest), 'MMM yyyy')}`
+      ? `${format(parseMeetingDate(dateRange.earliest), 'MMM yyyy')} – ${format(parseMeetingDate(dateRange.latest), 'MMM yyyy')}`
       : 'N/A'
 
   return (

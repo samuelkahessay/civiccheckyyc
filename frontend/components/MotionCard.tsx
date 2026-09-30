@@ -4,11 +4,12 @@ import type { MotionWithVotes } from '@/lib/localData'
  
 import { Calendar, Users, CheckCircle, XCircle, MinusCircle } from 'lucide-react'
 import { format } from 'date-fns'
-import { formatTopicName, cn } from '@/lib/utils'
+import { formatTopicName, cn, parseMeetingDate } from '@/lib/utils'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { getCardClasses } from '@/lib/component-variants'
 import { getTypographyClasses } from '@/lib/design-tokens'
+import { CouncilResultBadge } from './CouncilResultBadge'
 import { ImpactBadge, TopicBadge, UnifiedBadge } from './UnifiedBadge'
 
 interface MotionCardProps {
@@ -47,9 +48,6 @@ export function MotionCard({ motion, onTopicClick, onCandidateClick, showCandida
   const absentCount = dedupedVotes.filter(v => v.vote === 'absent').length || 0
   const totalVotes = dedupedVotes.length || 0
 
-  // Determine if this is a unanimous vote
-  const isUnanimous = (forCount === totalVotes || againstCount === totalVotes) && totalVotes > 0
-  const isSplit = forCount > 0 && againstCount > 0
 
   return (
     <div
@@ -75,7 +73,7 @@ export function MotionCard({ motion, onTopicClick, onCandidateClick, showCandida
             {/* Date */}
             <div className={cn(getTypographyClasses('caption'), "flex items-center gap-1.5 text-gray-500 dark:text-gray-400")}>
               <Calendar className="w-4 h-4" />
-              <span>{format(new Date(motion.meeting_date), 'MMM d, yyyy')}</span>
+              <span>{format(parseMeetingDate(motion.meeting_date), 'MMM d, yyyy')}</span>
             </div>
 
             {/* Topic */}
@@ -102,7 +100,7 @@ export function MotionCard({ motion, onTopicClick, onCandidateClick, showCandida
             {/* Vote Count */}
             <div className={cn(getTypographyClasses('caption'), "flex items-center gap-1.5 text-gray-500 dark:text-gray-400")}>
               <Users className="w-4 h-4" />
-              <span>{totalVotes} vote{totalVotes !== 1 ? 's' : ''}</span>
+              <span>{totalVotes} tracked candidate{totalVotes !== 1 ? 's' : ''}</span>
             </div>
           </div>
         </div>
@@ -164,12 +162,7 @@ export function MotionCard({ motion, onTopicClick, onCandidateClick, showCandida
                 </div>
               )}
 
-              {isUnanimous && (
-                <UnifiedBadge semanticType="success">Unanimous</UnifiedBadge>
-              )}
-              {isSplit && (
-                <UnifiedBadge semanticType="warning">Split Decision</UnifiedBadge>
-              )}
+              <CouncilResultBadge motion={motion} />
             </div>
           </div>
         )}

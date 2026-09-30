@@ -4,7 +4,7 @@ import type { VoteWithCandidate } from '@/lib/localData'
 import { Card } from '@tremor/react'
 import { Calendar, User } from 'lucide-react'
 import { format } from 'date-fns'
-import { formatTopicName } from '@/lib/utils'
+import { formatTopicName, parseMeetingDate } from '@/lib/utils'
 import Link from 'next/link'
 import { ImpactBadge, TopicBadge, VoteBadge as UnifiedVoteBadge } from './UnifiedBadge'
 
@@ -78,7 +78,7 @@ export function VotingActivityFeed({ votes, onTopicClick }: VotingActivityFeedPr
                   {/* Date */}
                   <div className="flex items-center gap-1.5 text-gray-500 dark:text-gray-400">
                     <Calendar className="w-4 h-4" />
-                    <span>{format(new Date(vote.meeting_date), 'MMM d, yyyy')}</span>
+                    <span>{format(parseMeetingDate(vote.meeting_date), 'MMM d, yyyy')}</span>
                   </div>
 
                   {/* Topic */}

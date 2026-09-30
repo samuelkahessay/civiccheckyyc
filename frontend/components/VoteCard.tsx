@@ -16,6 +16,7 @@ import { Calendar, ChevronDown, Info } from "lucide-react"
 import { getCardClasses } from "@/lib/component-variants"
 import { getTypographyClasses } from "@/lib/design-tokens"
 import { ImpactBadge, TopicBadge, VoteBadge as UnifiedVoteBadge } from "./UnifiedBadge"
+import { parseMeetingDate } from '@/lib/utils'
 
 interface VoteCardProps {
   vote: Vote
@@ -64,7 +65,7 @@ export function VoteCard({ vote }: VoteCardProps) {
 
           <div className="flex items-center gap-2">
             <Calendar className="w-4 h-4 text-gray-500 dark:text-gray-400" />
-            <span className="text-gray-700 dark:text-gray-300">{format(new Date(vote.meeting_date), 'MMM d, yyyy')}</span>
+            <span className="text-gray-700 dark:text-gray-300">{format(parseMeetingDate(vote.meeting_date), 'MMM d, yyyy')}</span>
           </div>
 
           {vote.meeting_type && (

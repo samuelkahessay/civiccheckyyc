@@ -37,6 +37,11 @@ export interface Motion {
   source_portal_url: string | null
   created_at: string
   updated_at: string
+  // Whole-council outcome from the source dataset; votes below cover tracked candidates only.
+  council_result: 'Carried' | 'Defeated' | null
+  council_for: number | null
+  council_against: number | null
+  council_absent: number | null
 }
 
 export interface Vote {
@@ -194,7 +199,7 @@ const seedPath = path.join(appDir, 'data', 'local-seed.sql')
 const dbDir = process.env.VERCEL
   ? path.join(os.tmpdir(), 'civiccheckyyc')
   : path.join(appDir, '.local')
-const dbPath = process.env.CIVICCHECK_LOCAL_DB || path.join(dbDir, 'civiccheckyyc.sqlite')
+const dbPath = process.env.CIVICCHECK_LOCAL_DB || path.join(dbDir, 'civiccheckyyc-v2.sqlite')
 
 let dbInstance: Database.Database | null = null
 

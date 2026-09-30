@@ -4,7 +4,7 @@ import { Card, BarChart, DonutChart, Divider } from '@tremor/react'
 import { ArrowLeft, GitCompare, CheckCircle, XCircle, MinusCircle } from 'lucide-react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { formatTopicName } from '@/lib/utils'
+import { formatTopicName, parseMeetingDate } from '@/lib/utils'
 import { format } from 'date-fns'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { ImpactBadge, TopicBadge, UnifiedBadge } from '@/components/UnifiedBadge'
@@ -376,7 +376,7 @@ export default async function ComparePage({ searchParams }: PageProps) {
                           </p>
                         )}
                         <div className="flex flex-wrap gap-2 text-xs text-gray-500 dark:text-gray-400 ml-7">
-                          <span>{format(new Date(overlap.meeting_date), 'MMM d, yyyy')}</span>
+                          <span>{format(parseMeetingDate(overlap.meeting_date), 'MMM d, yyyy')}</span>
                           {overlap.topic && (
                             <>
                               <span>•</span>

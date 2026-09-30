@@ -7,6 +7,7 @@ import { Calendar, Info, CheckCircle, XCircle, MinusCircle } from "lucide-react"
 import { getCardClasses } from "@/lib/component-variants"
 import { getTypographyClasses } from "@/lib/design-tokens"
 import { VoteBadge as UnifiedVoteBadgeComponent, TopicBadge } from "./UnifiedBadge"
+import { parseMeetingDate } from '@/lib/utils'
 
 interface SimpleVoteCardProps {
   vote: Vote
@@ -72,7 +73,7 @@ export function SimpleVoteCard({ vote, onClick }: SimpleVoteCardProps) {
         <div className={cn(getTypographyClasses('caption'), "flex flex-wrap items-center gap-3 text-gray-500 dark:text-gray-400")}>
           <div className="flex items-center gap-1.5">
             <Calendar className="w-4 h-4" />
-            <span>{format(new Date(vote.meeting_date), 'MMM d, yyyy')}</span>
+            <span>{format(parseMeetingDate(vote.meeting_date), 'MMM d, yyyy')}</span>
           </div>
 
           {vote.topic && (

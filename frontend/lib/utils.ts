@@ -116,3 +116,13 @@ export function parseArray(param: string | null | undefined): string[] {
 export function stringifyArray(arr: string[]): string {
   return arr.join(',')
 }
+
+/**
+ * Parse a date-only value (YYYY-MM-DD) as a local calendar date.
+ * `new Date('2024-09-17')` is UTC midnight, which renders as Sep 16 anywhere
+ * west of UTC, including Calgary.
+ */
+export function parseMeetingDate(value: string): Date {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value)
+  return match ? new Date(+match[1], +match[2] - 1, +match[3]) : new Date(value)
+}

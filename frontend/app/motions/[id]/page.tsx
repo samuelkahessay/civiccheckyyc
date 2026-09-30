@@ -2,10 +2,11 @@ import { getMotionById, getMotionExplainerByMotionId } from '@/lib/localData'
 import { Card, DonutChart } from '@tremor/react'
 import { ArrowLeft, Calendar, FileText, CheckCircle, XCircle, MinusCircle, Flame, ExternalLink } from 'lucide-react'
 import { format } from 'date-fns'
-import { formatTopicName } from '@/lib/utils'
+import { formatTopicName, parseMeetingDate } from '@/lib/utils'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
+import { CouncilResultBadge } from '@/components/CouncilResultBadge'
 import { ImpactBadge, TopicBadge, UnifiedBadge, VoteBadge as UnifiedVoteBadge } from '@/components/UnifiedBadge'
 import { getTypographyClasses } from '@/lib/design-tokens'
 
@@ -78,8 +79,6 @@ export default async function MotionDetailPage({ params }: PageProps) {
   const absentCount = dedupedVotes.filter(v => v.vote === 'absent').length || 0
   const totalVotes = dedupedVotes.length || 0
 
-  const isUnanimous = (forCount === totalVotes || againstCount === totalVotes) && totalVotes > 0
-  const isSplit = forCount > 0 && againstCount > 0
 
   // Get truncated motion title for breadcrumb
   const motionTitle = motion.motion_summary || motion.resolution
@@ -105,7 +104,7 @@ export default async function MotionDetailPage({ params }: PageProps) {
             <div className="flex flex-wrap items-center gap-3 text-sm mb-4">
               <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
                 <Calendar className="w-4 h-4" />
-                <span>{format(new Date(motion.meeting_date), 'MMMM d, yyyy')}</span>
+                <span>{format(parseMeetingDate(motion.meeting_date), 'MMMM d, yyyy')}</span>
               </div>
 
               {motion.topic && (
@@ -179,12 +178,7 @@ export default async function MotionDetailPage({ params }: PageProps) {
                     </div>
                   )}
 
-                  {isUnanimous && (
-                    <UnifiedBadge semanticType="success">Unanimous</UnifiedBadge>
-                  )}
-                  {isSplit && (
-                    <UnifiedBadge semanticType="warning">Split Decision</UnifiedBadge>
-                  )}
+                  <CouncilResultBadge motion={motion} />
                 </div>
               </div>
             )}
