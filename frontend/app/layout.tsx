@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { TremorColorSafelist } from "@/components/TremorColorSafelist";
 import { Navigation } from "@/components/Navigation";
+import { ArchiveBanner } from "@/components/ArchiveBanner";
 import { absoluteUrl, getSiteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -45,16 +46,10 @@ export const metadata: Metadata = {
     creator: '@civiccheckyyc',
     images: ['/og-image.png'],
   },
+  // Archived snapshot: keep out of search indexes.
   robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
+    index: false,
+    follow: false,
   },
 };
 
@@ -66,6 +61,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark:bg-gray-950">
       <body className="antialiased">
+        <ArchiveBanner />
         {/* Calgary civic stripe */}
         <div className="h-[3px] bg-red-700 dark:bg-red-600" aria-hidden="true" />
         {/* Skip to main content link for screen readers and keyboard navigation */}
