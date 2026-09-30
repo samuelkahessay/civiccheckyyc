@@ -1,5 +1,6 @@
 import Database from 'better-sqlite3'
 import fs from 'node:fs'
+import os from 'node:os'
 import path from 'node:path'
 
 export interface Candidate {
@@ -183,11 +184,17 @@ export interface VoteWithMotion extends Vote {
   motions: Motion | null
 }
 
-const appDir = process.cwd().endsWith('frontend')
+// The app runs from frontend/ locally and from the deployment root on Vercel.
+const appDir = fs.existsSync(path.join(process.cwd(), 'data', 'local-seed.sql'))
   ? process.cwd()
   : path.join(process.cwd(), 'frontend')
 const seedPath = path.join(appDir, 'data', 'local-seed.sql')
-const dbPath = process.env.CIVICCHECK_LOCAL_DB || path.join(appDir, '.local', 'civiccheckyyc.sqlite')
+// Vercel's project directory is read-only at runtime, so the database lives
+// in the temp dir there and is re-seeded on cold start.
+const dbDir = process.env.VERCEL
+  ? path.join(os.tmpdir(), 'civiccheckyyc')
+  : path.join(appDir, '.local')
+const dbPath = process.env.CIVICCHECK_LOCAL_DB || path.join(dbDir, 'civiccheckyyc.sqlite')
 
 let dbInstance: Database.Database | null = null
 
