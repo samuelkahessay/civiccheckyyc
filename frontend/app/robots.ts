@@ -1,15 +1,13 @@
 import { MetadataRoute } from 'next'
-import { absoluteUrl } from '@/lib/site'
 
+// Archived snapshot: not maintained, so it stays out of every index.
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
         userAgent: '*',
-        allow: '/',
-        disallow: ['/api/'],
+        disallow: '/',
       },
     ],
-    sitemap: absoluteUrl('/sitemap.xml'),
   }
 }
